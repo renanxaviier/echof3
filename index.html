@@ -188,7 +188,7 @@
                             <div class="form-group">
                                 <textarea class="form-control" id="message" rows="4" placeholder="Sua Mensagem" required></textarea>
                             </div>
-                            <button type="button" class="btn btn-whatsapp btn-block" onclick="sendToWhatsApp()">Enviar pelo WhatsApp</button>
+                            <button type="submit" class="btn btn-whatsapp btn-block" onclick="sendToWhatsApp()">Enviar pelo WhatsApp</button>
                         </form>
                     </div>
                 </div>
@@ -215,5 +215,34 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+
+        <!-- Código para abrir whatsapp-->
+        <script>
+            function sendToWhatsApp() {
+                console.log("Função sendToWhatsApp foi chamada!"); // Teste
+            
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let phone = document.getElementById("phone").value;
+                let message = document.getElementById("message").value;
+            
+                if (name === "" || email === "" || phone === "" || message === "") {
+                    alert("Por favor, preencha todos os campos.");
+                    return;
+                }
+            
+                let whatsappNumber = "5585997573629"; // Substitua pelo número real
+                let text = `Olá, meu nome é *${name}*.\nMeu e-mail é: ${email}.\nMeu WhatsApp: ${phone}.\n\nMensagem:\n${message}`;
+                let encodedText = encodeURIComponent(text);
+                let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+            
+                console.log("URL gerada:", whatsappURL); // Para testar
+            
+                window.open(whatsappURL, "_blank"); // Abre o WhatsApp
+            }
+            </script>
+            
     </body>
 </html>

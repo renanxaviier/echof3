@@ -75,7 +75,8 @@ Mensagem:
 ${message}`;
 
     let encodedText = encodeURIComponent(text);
-    let whatsappURL = `https://wa.me/5585997573629?text=${encodedText}`;
+    let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+    <form id="contactForm" onsubmit="event.preventDefault(); sendToWhatsApp();">
 
     window.open(whatsappURL, "_blank"); // Abre o WhatsApp em uma nova aba/janela
 }
